@@ -262,9 +262,15 @@
   </div>
 </div>
                     </div>`);
-                    if (Object.keys(data.res[i].ips).indexOf(your_ip) > -1) {
+                    // if (Object.keys(data.res[i].ips).indexOf(your_ip) > -1) {
+                    //     item.find(".card").addClass("active");
+                    // }
+
+
+                    if (ip == your_ip) {
                         item.find(".card").addClass("active");
                     }
+
                     $(".items").append(item);
 
                 }
