@@ -1,5 +1,7 @@
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser');
+const config = require(`${__dirname}/config`);
+
 const app = new Koa();
 const fs = require('fs');
 app.use(bodyParser());
@@ -8,7 +10,7 @@ app.use(bodyParser());
 let CronJob = require('cron').CronJob;
 const client = require(__dirname+'/client');
 let job = new CronJob('*/30 * * * * *', function () {
-    //client();
+    client();
 }, null, true, 'America/Los_Angeles');
 job.start();
 
