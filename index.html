@@ -248,7 +248,7 @@
                         "202.65.212.24": "OFFICE",
                         "13.127.216.52": "INDIA"
                     };
-                    let item = $(`<div class="col-3">
+                    let item = $(`<div class="col-12 col-md-3">
                     <div class="card">
   <div class="card-body">
     <h5 class="card-title">${ipnames[ip] || ip}</h5>
@@ -256,6 +256,8 @@
         <span>${users}</span> Users
         <br />
         <span>${connections}</span> Connections
+        <br />
+        <span>${new Date(data.res[i].time)}</span>
     </p>
   </div>
 </div>
