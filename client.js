@@ -14,7 +14,7 @@ const main = async ()=>{
     })
     console.log(ips,connNumber);
     if (connNumber < config.minConn) {
-        spawnSync('/etc/init.d/etc/init.d/shadowsocks-libev');
+        spawnSync('/etc/init.d/etc/init.d/shadowsocks-libev restart');
     }
 
     let req = superagent.post(`${config.server}/submit`).send({ips,connNumber});
