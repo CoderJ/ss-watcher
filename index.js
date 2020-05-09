@@ -9,7 +9,7 @@ app.use(bodyParser());
 //client
 let CronJob = require('cron').CronJob;
 const client = require(__dirname+'/client');
-let job = new CronJob('*/30 * * * * *', function () {
+let job = new CronJob(config.cron, function () {
     client();
 }, null, true, 'America/Los_Angeles');
 job.start();
