@@ -23,7 +23,7 @@ app.use(async (ctx, next) => {
         item.time = new Date();
         fs.writeFileSync(`${__dirname}/tmp/${ctx.request.ip}`, JSON.stringify(item));
         ctx.body = '{ status: "ok" }';
-    }else{
+    }else if(ctx.url == "/data" && ctx.method == "GET"){
         let files = fs.readdirSync(`${__dirname}/tmp`,'utf8');
         console.log(files);
         let res = {};
@@ -32,7 +32,10 @@ app.use(async (ctx, next) => {
                 res[e] = JSON.parse(fs.readFileSync(`${__dirname}/tmp/${e}`, 'utf8'));
             }
         });
-        ctx.body = res;
+        ctx.header['Access-Control-Allow-Origin'] = "*";
+        ctx.body = { ip: ctx.request.ip, res};
+    }else{
+        ctx.body = fs.readFileSync(`${__dirname}/index.html`,'utf8');
     }
     
 });
