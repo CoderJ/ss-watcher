@@ -28,7 +28,9 @@ app.use(async (ctx, next) => {
         console.log(files);
         let res = {};
         files.forEach(e=>{
-            res[e] = JSON.parse(fs.readFileSync(`${__dirname}/tmp/${e}`,'utf8'));
+            if(e != '.gitkeep'){
+                res[e] = JSON.parse(fs.readFileSync(`${__dirname}/tmp/${e}`, 'utf8'));
+            }
         });
         ctx.body = res;
     }
