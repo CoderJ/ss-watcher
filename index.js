@@ -18,12 +18,13 @@ job.start();
 
 //server
 app.use(async (ctx, next) => {
+    console.log(ctx.path);
     if (ctx.url == '/submit' && ctx.method == "POST") {
         let item = ctx.request.body;
         item.time = new Date();
         fs.writeFileSync(`${__dirname}/tmp/${ctx.request.ip}`, JSON.stringify(item));
         ctx.body = '{ status: "ok" }';
-    }else if(ctx.url == "/data" && ctx.method == "GET"){
+    }else if(ctx.path == "/data" && ctx.method == "GET"){
         let files = fs.readdirSync(`${__dirname}/tmp`,'utf8');
         console.log(files);
         let res = {};
