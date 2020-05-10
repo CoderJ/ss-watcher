@@ -240,7 +240,7 @@
                 $(".your_ip").text(your_ip);
                 for (let i in data.res) {
                     let ip = i.replace('::ffff:', '');
-                    let users = Object.keys(data.res[i].ips).length - 1;
+                    let users = Object.keys(data.res[i].ips).length;
                     let connections = data.res[i].connNumber;
                     let ipnames = {
                         "52.78.143.82": "NET",
