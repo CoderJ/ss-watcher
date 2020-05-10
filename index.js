@@ -14,7 +14,7 @@ let job = new CronJob(config.cron, function () {
 }, null, true, 'America/Los_Angeles');
 job.start();
 
-
+client();
 
 //server
 app.use(async (ctx, next) => {
