@@ -4,13 +4,10 @@ const config = require(`${__dirname}/config`);
 
 const main = async ()=>{
     let connections = execFileSync(`${__dirname}/ips.sh`).toString().split('\n').filter(e=>{
-        console.log(e);
         return e.split(/\s|\:/)[1] == "443"
     }).map(e=>{
-        console.log(e);
         return e.split(/\s|\:/)[2]
     });
-    console.log(connections);
     let ips = {};
     let connNumber = connections.length;
     connections.forEach(e => {
